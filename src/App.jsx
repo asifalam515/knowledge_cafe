@@ -10,9 +10,14 @@ function App() {
   const handleAddToBookmarks = (blog) => {
     setBookmarks([...bookmarks, blog]);
   };
-  const handleReadingTime = (time) => {
-    const updatedTime = readingTime + time;
-    setReadingTime(updatedTime);
+  const handleReadingTime = (time, id) => {
+    setReadingTime(readingTime + time);
+    // remove the bookmarks after clicking mark as read
+    // removed item baade baki gula ke include korbo
+    const remainingBookmark = bookmarks.filter(
+      (bookmark) => bookmark.id !== id
+    );
+    setBookmarks(remainingBookmark);
   };
   return (
     <>
@@ -23,7 +28,7 @@ function App() {
           handleReadingTime={handleReadingTime}
         ></Blogs>
 
-        <Bookmarks bookmarks={bookmarks}></Bookmarks>
+        <Bookmarks bookmarks={bookmarks} readingTime={readingTime}></Bookmarks>
       </div>
     </>
   );

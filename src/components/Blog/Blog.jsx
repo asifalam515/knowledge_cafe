@@ -3,6 +3,7 @@ import { FaRegBookmark } from "react-icons/fa6";
 const Blog = ({ blog, handleAddToBookmarks, handleReadingTime }) => {
   const {
     title,
+    id,
     cover_img,
     author,
     posted_date,
@@ -40,7 +41,7 @@ const Blog = ({ blog, handleAddToBookmarks, handleReadingTime }) => {
       </p>
       <button
         className="btn bg-green-600"
-        onClick={() => handleReadingTime(reading_time)}
+        onClick={() => handleReadingTime(reading_time, id)}
       >
         Mark as Read
       </button>
